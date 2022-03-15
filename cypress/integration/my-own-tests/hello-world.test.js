@@ -26,6 +26,7 @@ describe('Basic Tests', () => {
         cy.visit("https://linkedin.com");
 
         // cy.contains('Welcome to your professional community').should('have.text', '\n          Welcome to your professional community\n        ');
-        cy.contains('Welcome to your professional community').should('exist');
+        // cy.contains('Welcome to your professional community').should('exist');
+        cy.get('[data-test-id=hero__headline]').should('exist');
     })
 })
