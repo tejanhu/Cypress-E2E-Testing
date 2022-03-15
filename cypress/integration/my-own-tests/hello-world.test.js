@@ -9,8 +9,17 @@ describe('Basic Tests', () => {
         // cy.viewport(1280, 720);
         cy.visit("https://linkedin.com");
 
+        // Sign in page
         cy.contains('Sign in').click();
-        cy.contains('Password').should('exist');
-        cy.contains('Sign in with Apple').should('exist');
+
+        // Password reset page
+        cy.contains('Forgot password').click();
+        // cy.url().should('eq','https://www.linkedin.com/checkpoint/rp/request-password-reset?trk=guest_homepage-basic_nav-header-signin');
+
+        // Verify page url
+        cy.url().should('include', 'https://www.linkedin.com/checkpoint/rp/request-password-reset?trk=guest_homepage-basic_nav-header-signin');
+
+        // Return to Sign in page
+        cy.go('back');
     })
 })
