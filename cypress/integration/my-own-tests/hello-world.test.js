@@ -1,34 +1,16 @@
 /// <reference types="cypress" />
 
-describe('Blank test', () => {
-    it('test one', () => {
-        cy.visit("https://linkedin.com");
-        // mocha syntax
-        cy.contains("Welcome").should("exist");
-        cy.get("div#artdeco-global-alerts-cls-offset").should("exist");
-        // cy.get("div[id=artdeco-global-alerts-cls-offset]").should("exist");
-
-        cy.get("div#noartdeco-global-alerts-cls-offset").should("not.exist");
-
-        // Way 1 -> Brittle Method due to text possibly changing in future
-        // cy.contains("Suggested Searches");
-
-        // Way 2 -> Brittle Method due to class name i.e.: dummy class names (production) or element possibly changing in future
-        // cy.get('.etta-caps-header > h2');
-
-        // Way 3 -> Better way to use custom attribute
-        cy.get('[data-test-id="pill-list-module__cta"]');
-    })
-})
-
 describe('Basic Tests', () => {
-    it('Every basic element exists', () => {
-        cy.viewport(1280, 720)
+    it('The webpage loads, at least', () => {
         cy.visit("https://linkedin.com");
     })
 
-    it('Every basic element exists on mobile', () => {
-        cy.viewport('iphone-x')
+    it.only('Login page looks good', () => {
+        // cy.viewport(1280, 720);
         cy.visit("https://linkedin.com");
+
+        cy.contains('Sign in').click();
+        cy.contains('Password').should('exist');
+        cy.contains('Sign in with Apple').should('exist');
     })
 })
