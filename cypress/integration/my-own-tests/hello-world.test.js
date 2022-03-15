@@ -20,3 +20,12 @@ describe('Blank test', () => {
         cy.get('[data-test-id="pill-list-module__cta"]');
     })
 })
+
+describe('Basic Tests', () => {
+    it('We have correct page title', () => {
+        cy.visit("https://linkedin.com");
+
+        // cy.contains('Welcome to your professional community').should('have.text', '\n          Welcome to your professional community\n        ');
+        cy.contains('Welcome to your professional community').should('exist');
+    })
+})
