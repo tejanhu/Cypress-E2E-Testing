@@ -23,7 +23,7 @@ describe('Blank test', () => {
 
 describe('Basic Tests', () => {
     it('Every basic element exists', () => {
-        cy.viewport("macbook-16")
+        cy.viewport(1280, 720)
         cy.visit("https://linkedin.com");
 
     })
