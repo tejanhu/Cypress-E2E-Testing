@@ -21,5 +21,11 @@ describe('Basic Tests', () => {
 
         // Return to Sign in page
         cy.go('back');
+
+
+        cy.contains("Join now").click();
+
+
+        cy.url().should('include', '/signup');
     })
 })
