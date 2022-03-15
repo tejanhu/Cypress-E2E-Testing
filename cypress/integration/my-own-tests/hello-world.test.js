@@ -22,7 +22,7 @@ describe('Blank test', () => {
 })
 
 describe('Basic Tests', () => {
-    it('We have correct page title', () => {
+    it('Every basic element exists', () => {
         cy.visit("https://linkedin.com");
 
         // cy.contains('Welcome to your professional community').should('have.text', '\n          Welcome to your professional community\n        ');
