@@ -9,12 +9,33 @@ describe('Basic Tests', () => {
         // cy.viewport(1280, 720);
         cy.visit("https://linkedin.com");
 
+        cy.log("going to sign in");
+
         // Sign in page
         cy.contains('Sign in').click();
+
+        cy.log("going to forgot password");
 
         // Password reset page
         cy.contains('Forgot password').click();
         // cy.url().should('eq','https://www.linkedin.com/checkpoint/rp/request-password-reset?trk=guest_homepage-basic_nav-header-signin');
+
+        // Doesn't work as Cypress works Asynchronously
+        cy.log('Current (non-working) URL =', cy.url());
+
+        cy.url().then(val => {
+            cy.log('The current (working) real URL is: ', val);
+        });
+
+        // Doesn't show in browser this way
+        cy.url().then(val => {
+            cy.log('The URL: ' + cy.url());
+        });
+
+        // Appears only in browser
+        cy.url().then(val => {
+            console.log('The URL is: ', val);
+        });
 
         // Verify page url
         cy.url().should('include', 'https://www.linkedin.com/checkpoint/rp/request-password-reset?trk=guest_homepage-basic_nav-header-signin');
@@ -22,6 +43,7 @@ describe('Basic Tests', () => {
         // Return to Sign in page
         cy.go('back');
 
+        cy.log("going to join now");
 
         cy.contains("Join now").click();
 
