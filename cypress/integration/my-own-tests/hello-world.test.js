@@ -51,17 +51,7 @@ describe('Basic Tests', () => {
         cy.url().should('include', '/signup');
     })
 
-    it('Login should work fine', () => {
-        cy.viewport(1280, 720);
-        cy.visit("https://linkedin.com");
-        cy.contains('Sign in').click();
-        cy.get('#username').type('user');
-        cy.get('#password').type('password123');
-        cy.get('.btn__primary--large').click();
-    })
-
-
-    it.only('Login should display correct error', () => {
+    it('Login should display correct error', () => {
         cy.viewport(1280, 720);
         cy.visit("https://linkedin.com");
         cy.contains('Sign in').click();
@@ -70,5 +60,16 @@ describe('Basic Tests', () => {
         cy.get('#password').type('password123');
         cy.get('.btn__primary--large').click();
         cy.contains("Please enter a valid username").should("exist");
+    })
+
+    it.only('Login should work fine', () => {
+        cy.viewport(1280, 720);
+        cy.visit("https://linkedin.com");
+        cy.contains('Sign in').click();
+        cy.get('#username').type('tejanahmedhu@gmail.com');
+        cy.get('#password').type('hussein95');
+        cy.get('.btn__primary--large').click();
+        cy.url().should('include', 'https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin');
+        cy.contains("Welcome, Hussein!").should("exist");
     })
 })
