@@ -1,6 +1,11 @@
 /// <reference types="cypress" />
 
 describe('Basic Unauthenticated Desktop Tests', () => {
+
+    // before(() => {
+    //    Before hook done 
+    // })
+
     beforeEach(() => {
         // bootstrapping external things
         cy.viewport(1280, 720);
@@ -10,7 +15,6 @@ describe('Basic Unauthenticated Desktop Tests', () => {
 
     it('Login page looks good', () => {
       
-
         cy.log("going to sign in");
 
         // Sign in page
@@ -59,7 +63,7 @@ describe('Basic Unauthenticated Desktop Tests', () => {
         cy.get('#username').type('user');
         cy.get('#password').type('password123');
         cy.get('.btn__primary--large').click();
-        cy.contains("Please enter a valid username").should("exist");
+        cy.contains("Please enter a valid username", {timeout: 1 * 3000}).should("exist");
     })
 
     it.only('Login should work fine', () => {
@@ -68,6 +72,6 @@ describe('Basic Unauthenticated Desktop Tests', () => {
         cy.get('#password').type('hussein95');
         cy.get('.btn__primary--large').click();
         cy.url().should('include', 'https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin');
-        cy.contains("Welcome, Hussein!").should("exist");
+        cy.contains("Welcome, Hussein!", {timeout: 1 * 3000}).should("exist");
     })
 })
