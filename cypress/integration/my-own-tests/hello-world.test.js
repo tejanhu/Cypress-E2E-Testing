@@ -1,13 +1,15 @@
 /// <reference types="cypress" />
 
-describe('Basic Tests', () => {
-    it('The webpage loads, at least', () => {
+describe('Basic Unauthenticated Desktop Tests', () => {
+    beforeEach(() => {
+        // bootstrapping external things
+        cy.viewport(1280, 720);
         cy.visit("https://linkedin.com");
     })
 
+
     it('Login page looks good', () => {
-        // cy.viewport(1280, 720);
-        cy.visit("https://linkedin.com");
+      
 
         cy.log("going to sign in");
 
@@ -52,8 +54,6 @@ describe('Basic Tests', () => {
     })
 
     it('Login should display correct error', () => {
-        cy.viewport(1280, 720);
-        cy.visit("https://linkedin.com");
         cy.contains('Sign in').click();
         cy.contains("Please enter a valid username").should("not.exist");
         cy.get('#username').type('user');
@@ -63,8 +63,6 @@ describe('Basic Tests', () => {
     })
 
     it.only('Login should work fine', () => {
-        cy.viewport(1280, 720);
-        cy.visit("https://linkedin.com");
         cy.contains('Sign in').click();
         cy.get('#username').type('tejanahmedhu@gmail.com');
         cy.get('#password').type('hussein95');
