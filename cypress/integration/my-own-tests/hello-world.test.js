@@ -64,10 +64,10 @@ describe('Basic Unauthenticated Desktop Tests', () => {
 
     it.only('Login should work fine', () => {
         cy.contains('Sign in').click();
-        cy.get('#username').type('tejanahmedhu@gmail.com');
-        cy.get('#password').type('hussein95');
+        cy.get('#username').type('someemail@gmail.com');
+        cy.get('#password').type('somepassword');
         cy.get('.btn__primary--large').click();
         cy.url().should('include', 'https://www.linkedin.com/feed/?trk=guest_homepage-basic_nav-header-signin');
-        cy.contains("Welcome, Hussein!").should("exist");
+        cy.contains("Welcome, User!").should("exist");
     })
 })
